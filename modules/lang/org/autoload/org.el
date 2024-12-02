@@ -496,8 +496,9 @@ Made for `org-tab-first-hook'."
                   t)))
          ;; HACK Yasnippet breaks org-superstar-mode because yasnippets is
          ;;      overzealous about cleaning up overlays.
-         (when (bound-and-true-p org-superstar-mode)
-           (org-superstar-restart)))))
+         (if (bound-and-true-p org-superstar-mode)
+             (org-superstar-restart)
+           t))))
 
 ;;;###autoload
 (defun +org-cycle-only-current-subtree-h (&optional arg)
