@@ -125,9 +125,8 @@ package's name as a symbol, and whose CDR is the plist supplied to its
               (melpa              :type git :host github
                                   :repo "melpa/melpa"
                                   :build nil)
-              (nongnu-elpa        :type git
-                                  :repo "https://git.savannah.gnu.org/git/emacs/nongnu.git"
-                                  :local-repo "nongnu-elpa"
+              (nongnu-elpa        :type git :host github
+                                  :repo "emacsmirror/nongnu_elpa"
                                   :build nil)
               (gnu-elpa-mirror    :type git :host github
                                   :repo "emacs-straight/gnu-elpa-mirror"
