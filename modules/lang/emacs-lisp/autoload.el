@@ -32,7 +32,9 @@ to a pop up buffer."
 (defun +emacs-lisp-outline-level ()
   "Return outline level for comment at point.
 Intended to replace `lisp-outline-level'."
-  (- (match-end 1) (match-beginning 1)))
+  (if (match-beginning 1)
+      (- (match-end 1) (match-beginning 1))
+    0))
 
 
 ;;
@@ -66,7 +68,7 @@ Intended to replace `lisp-outline-level'."
                           (re-search-backward
                            "\\_<:\\(?:\\sw\\|\\s_\\)+\\_>" ;; Find a keyword.
                            doom-start 'noerror))
-                (unless (looking-back "(" (bol))
+                (unless (looking-back "(" (pos-bol))
                   (let ((kw-syntax (syntax-ppss)))
                     (when (and (= (ppss-depth kw-syntax) doom-depth)
                                (not (ppss-string-terminator kw-syntax))
